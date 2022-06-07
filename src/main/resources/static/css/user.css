@@ -1,0 +1,31 @@
+.basic-info{
+    margin: 20px 0;
+}
+
+.artist-name {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.artist-work-container{
+    padding: 20px 0;
+    margin: 20px 0;
+    border-bottom: 1px #cccccc solid;
+}
+
+.artist-head{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.sale-info-container{
+    margin: 10px 0;
+}
+
+input:read-only{
+    background-color: #cccccc;
+}
+
+.price{
+
+}

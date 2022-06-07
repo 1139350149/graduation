@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>detail</title>
+    <link rel="icon" th:href="@{/resource/logo.png}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/detail.css}">
+    <script th:src="@{/javaScript/jquery.js}" type="text/javascript"></script>
+    <script th:src="@{/javaScript/home.js}" type="text/javascript"></script>
+    <script th:src="@{/javaScript/detail.js}" type="text/javascript"></script>
+</head>
+<nav th:replace="backHeader :: backHeader (loginUser=${session.loginUser}, userId=${session.userId})"></nav>
+<body>
+<div class="main background-gray">
+    <div class="container-fluid">
+        <div class="detail-img-container text-center">
+            <img class="detail-img" th:src="${work.base64Img}" width="60%" height="auto">
+        </div>
+    </div>
+    <div class="background-white">
+        <div class="container work-info">
+            <div class="info-container">
+                <p class="work-name" th:text="${work.name}"></p>
+                <p class="info-head">创作日期：<span th:text="${work.time}"></span></p>
+                <p class="info-head">宽：<span th:text="${work.width}"></span>cm</p>
+                <p class="info-head">高：<span th:text="${work.height}"></span>cm</p>
+                <p class="info-head">作品材质：<span th:text="${work.material}"></span></p>
+            </div>
+            <div class="tag-remark-container">
+                <div class="tag-container">
+                    <a th:each="tag : ${tags}" th:href="@{/search/tag(tag=${tag.tag})}" class="tag"
+                       th:text="'#'+ ${tag.tag}"></a>
+                </div>
+                <div class="remark-container">
+                    <p class="remark" th:text="${work.remark}"></p>
+                </div>
+            </div>
+            <div class="artist-container">
+                <p class="info-head">作者：<a class="user-content" th:text="${work.artistName}"
+                                           th:href="@{/user(id=${work.artistId})}"></a></p>
+            </div>
+            <div class="owner-container">
+                <p class="info-head">所有者：<a class="user-content" th:text="${work.ownerName}"
+                                            th:href="@{/user(id=${work.ownerId})}"></a></p>
+            </div>
+            <div class="history-container">
+                <p class="history-head">作品交易历史</p>
+                <p class="no-history" th:if="${trades == null}">抱歉，该作品未参与过任何交易</p>
+                <div class="row container-fluid text-center" th:if="${trades != null}">
+                    <div class="col-6 row" th:each="trade,iterStat : ${trades}">
+                        <div class="col-md-6 col-lg-6 col-sm-6 detail-container vertical-center-container">
+                            <a class="from-user" th:text="${trade.fromUserName}"
+                               th:href="@{/user(id=${trade.fromUserId})}"></a>
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-sm-6 detail-container">
+                            <p class="price" th:text="${trade.price} + '元'"></p>
+                            <p class="date" th:text="${trade.tradeDate}"></p>
+                            <img th:src="@{/resource/arrow_right.png}">
+                        </div>
+                    </div>
+                    <div class="col-6 row" th:each="trade,iterStat : ${trades}" th:if="${iterStat.last}">
+                        <div class="col-md-6 col-lg-6 col-sm-6 detail-container vertical-center-container">
+                            <a class="from-user" th:text="${trade.toUserName}"
+                               th:href="@{/user(id=${trade.toUserId})}"></a>
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-sm-6 display-none invisible">
+                            <p class="price">a</p>
+                            <p class="date">b</p>
+                            <img th:src="@{/resource/arrow_right.png}">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="trade-container">
+                <p class="history-head">作品定价</p>
+                <p class="no-history" th:if="${work.forSale == false}">抱歉，该作品是非卖品</p>
+                <p class="trade-price" th:if="${work.forSale == true}" th:text="${work.price} + '元'"></p>
+            </div>
+
+            <form th:if="${buy == true}" id="purchase-form" th:action="@{/buy}" method="post">
+                <p id="wid-in" class="invisible position-absolute" th:text="${work.workId}"></p>
+                <p id="aid-in" class="invisible position-absolute" th:text="${work.ownerId}"></p>
+                <p id="price-in" class="invisible position-absolute" th:text="${work.price}"></p>
+                <input id="wid" name="wid" class="invisible position-absolute">
+                <input id="aid" name="aid" class="invisible position-absolute">
+                <input id="price" name="price" class="invisible position-absolute">
+                <button type="submit" class="btn btn-primary btn-sm">购买</button>
+            </form>
+            <div class="history-container" th:if="${history} == true">
+                <p class="history-head">作品被浏览记录</p>
+                <p class="no-history" th:if="${histories} == null">抱歉，该作品未被其他人浏览过</p>
+                <div class="row container-fluid text-center" th:if="${histories != null}">
+                    <div class="col-3 row" th:each="h : ${histories}">
+                        <div class="col-md-12 col-lg-12 col-sm-12">
+                            <a class="from-user" th:text="${h.name}" th:href="@{/user(id=${h.userId})}"></a>
+                            <br/>
+                            <p class="date" th:text="${h.viewDate}"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

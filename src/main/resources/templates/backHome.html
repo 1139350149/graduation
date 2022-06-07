@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="icon" th:href="@{/resource/logo.png}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}">
+    <script th:src="@{/javaScript/jquery.js}" type="text/javascript"></script>
+    <script th:src="@{/javaScript/home.js}" type="text/javascript"></script>
+</head>
+<body>
+<nav th:replace="backHeader :: backHeader (loginUser=${session.loginUser}, userId=${session.userId})"></nav>
+<div class="main">
+    <div id="background"></div>
+    <div class="container-fluid head">
+        <div class="row row-cols-3">
+            <div class="col-md-6 offset-1 order-md-1">
+                <p class="theme">
+                    与他人分享画作
+                </p>
+                <p class="description text-secondary">
+                    在这里你可以分享你的 <strong>绘画技艺</strong>, <strong>构图理念</strong>, <strong>内心想法</strong>。
+                </p>
+                <p class="description text-secondary">
+                    以铜为镜，可以正衣冠
+                </p>
+                <p class="description text-secondary">
+                    以史为镜，可以知兴替
+                </p>
+                <p class="description text-secondary">
+                    以人为镜，可以明得失
+                </p>
+                <p class="description text-secondary">
+                    希望在这里你也可以见到更好的自己。
+                </p>
+            </div>
+            <div class="col-md-4 order-md-2">
+                <img th:src="@{/resource/logo_large.png}" class="logo" alt="logo">
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="offset-md-1 col-md-5 sector">
+                <img th:src="@{/resource/platform_description.png}" alt="platform description" width="60%" height="auto">
+            </div>
+            <div class="col-md-4 sector desc-container" >
+                <p class="container-head">产品简介</p>
+                <span class="container-head-subtitle">PRODUCTION INTRODUCTION</span>
+                <div class="description-container platform-desc">
+                    打破了传统的艺术作品交易流程，将其与区块链技术结合，所有交易数据上链后无法篡改。
+                    艺术作品的相关信息，交易人员都会进行收集，并将生成的数据实时上链，确保艺术作品交易的透明性和安全性，同时保护创作者的权益。
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<footer th:include="backFooter :: backFooter"></footer>
+</body>
+</html>

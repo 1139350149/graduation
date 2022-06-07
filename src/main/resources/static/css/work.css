@@ -1,0 +1,58 @@
+.work-img-container {
+    margin: 10px auto;
+}
+
+.work-img {
+    margin: 10px 0;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.work-img-container:hover {
+    background-color: rgb(225, 225, 225);
+}
+
+.work-info-container {
+    margin: 0 15px;
+    text-align: justify;
+}
+
+.work-info-container:after {
+    content: "";
+    display: inline-block;
+    overflow: hidden;
+    width: 100%;
+}
+
+.work-artist {
+    color: black;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.work-artist:hover{
+    text-decoration: none;
+}
+
+.work-time {
+    text-align: right;
+    position: relative;
+    right: 0;
+    display: inline-block;
+}
+
+.work-title-container {
+    margin: 0 15px;
+    padding: 3px 2px;
+}
+
+.work-title {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.no-result{
+    font-size: 18px;
+    color: red;
+    font-weight: 600;
+}

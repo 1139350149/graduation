@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>works</title>
+    <link rel="icon" th:href="@{/resource/logo.png}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/work.css}">
+    <link th:href="@{/css/toast.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{/javaScript/jquery.js}" type="text/javascript"></script>
+    <script th:src="@{/javaScript/toast.js}" type="text/javascript"></script>
+    <script th:src="@{/javaScript/home.js}" type="text/javascript"></script>
+</head>
+<body>
+<nav th:replace="backHeader :: backHeader (loginUser=${session.loginUser}, userId=${session.userId})"></nav>
+<div class="main">
+    <div class="container-fluid">
+        <div class="row">
+            <div th:if="${works != null}" th:each="work : ${works}" class="col-md-4 col-lg-3 col-sm-4">
+                <div class="work-container">
+                    <div class="work-img-container text-center">
+                        <a th:href="@{/detail/work(id=${work.workId})}">
+                            <img class="work-img" th:src="${work.base64Img}" width="80%" height="auto">
+                        </a>
+                    </div>
+                    <div class="work-title-container">
+                        <p class="work-title" th:text="${work.name}"></p>
+                    </div>
+                    <div class="work-info-container">
+                        <a class="work-artist" th:text="${work.artistName}" th:href="@{/user(id=${work.artistId})}"></a>
+                        <a class="work-time" th:text="${#dates.format(work.time, 'yyyy-MM-dd')}"></a>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center no-result" th:if="${works == null}">
+                非常抱歉，不存在与您搜索内容相关的作品
+            </p>
+        </div>
+    </div>
+</div>
+<p id ="hint" th:if="${hint} != null" th:text="${hint}"></p>
+</body>
+</html>

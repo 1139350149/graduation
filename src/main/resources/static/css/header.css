@@ -1,0 +1,12 @@
+.head{
+    /*background: #ccc;*/
+}
+
+.nav-link{
+    color: #0b2e13;
+}
+
+.main{
+    min-height: 400px;
+    margin-top: 56px;
+}

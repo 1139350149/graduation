@@ -1,0 +1,118 @@
+.background-gray {
+    background-color: rgb(245, 245, 245);
+}
+
+.detail-img-container {
+    margin: 3% 0;
+    padding: 5px;
+}
+
+.detail-img {
+    cursor: pointer;
+}
+
+.background-white {
+    background-color: white;
+}
+
+.info-container {
+    padding: 5px 0;
+}
+
+.work-name {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.info-head {
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.tag:first-child {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.tag {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 3px 5px 10px;
+    color: deepskyblue;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.tag:hover {
+    text-decoration: none;
+    color: deepskyblue;
+}
+
+.remark {
+    color: rgb(92, 92, 92);
+}
+
+.user-content {
+    font-weight: 700;
+    font-size: 18px;
+    color: black;
+}
+
+.user-content:hover {
+    color: gray;
+    text-decoration: none;
+}
+
+.history-head {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.no-history {
+    color: red;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.trade-price {
+    font-size: 18px;
+}
+
+.work-info {
+    margin: 30px 0;
+}
+
+.detail-container {
+    margin: 15px 0;
+}
+
+.vertical-center-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.history-container p {
+    margin-bottom: 4px;
+}
+
+.from-user {
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+}
+
+.from-user:hover {
+    text-decoration: none;
+    color: #cccccc;
+}
+
+.price {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.date {
+    font-size: 16px;
+}

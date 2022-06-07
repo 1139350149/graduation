@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="backHeader (loginUser)">
+<head>
+    <meta charset="UTF-8">
+    <title>backHeader</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}">
+    <script th:src="@{/javaScript/bootstrap.bundle.min.js}" type="text/javascript" language="JavaScript"></script>
+    <script th:src="@{/javaScript/bootstrap.min.js}" type="text/javascript" language="JavaScript"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top">
+    <img th:src="@{/resource/logo.png}" alt="logo">
+    <a class="navbar-brand" th:if="${loginUser} == null" th:href="@{/}">
+        &nbsp;绘影
+    </a>
+    <a class="navbar-brand" th:if="${loginUser} != null" th:href="@{/works}">
+        &nbsp;绘影
+    </a>
+
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/works}">&nbsp;作品</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav mx-auto">
+            <form th:if="${loginUser} != null" th:action="@{/search}" class="form-inline  my-3 my-lg-0">
+                <input class="form-control" name="search" type="search" placeholder="搜索作品">
+            </form>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/}">v1.01</a>
+            </li>
+            <li th:if="${loginUser == null}" class="nav-item">
+                <a class="nav-link" th:href="@{/login}">登录</a>
+            </li>
+            <li th:if="${loginUser == null}" class="nav-item">
+                <a class="nav-link" th:href="@{/register}">注册</a>
+            </li>
+            <li th:if="${loginUser} != null" class="nav-item" >
+                <a class="nav-link" th:href="@{/upload}">我要投稿</a>
+            </li>
+            <li th:if="${loginUser} != null" class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" th:text="${loginUser}"></a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" th:href="@{/user(id=${userId})}">个人中心</a>
+                    <a class="dropdown-item" th:href="@{/exit}">退出登录</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+</body>
+</html>
